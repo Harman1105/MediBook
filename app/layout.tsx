@@ -12,11 +12,11 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "CarePulse",
+  title: "MediBook-Manage your appointments easily",
   description:
-    "A healthcare patient management System designed to streamline patient registration, appointment scheduling, and medical records management for healthcare providers.",
+    "A healthcare patient management System.",
   icons: {
-    icon: "/assets/icons/logo-icon.svg",
+    icon: "",
   },
 };
 

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Doctors } from "@/constants";
 import { getAppointment } from "@/lib/actions/appointment.actions";
 import { formatDateTime } from "@/lib/utils";
+import * as Sentry from "@sentry/nextjs";
+import { getUser } from "@/lib/actions/patient.actions";
 
 const RequestSuccess = async ({
   searchParams,
@@ -12,6 +14,9 @@ const RequestSuccess = async ({
 }: SearchParamProps) => {
   const appointmentId = (searchParams?.appointmentId as string) || "";
   const appointment = await getAppointment(appointmentId);
+  const user = await getUser(userId);
+
+  Sentry.metrics.increment("user_view_appointment_success", 1, {tags: { userName : user.name }});
 
   const doctor = Doctors.find(
     (doctor) => doctor.name === appointment.primaryPhysician
@@ -22,11 +27,11 @@ const RequestSuccess = async ({
       <div className="success-img">
         <Link href="/">
           <Image
-            src="/assets/icons/logo-full.svg"
+            src="/assets/icons/logo.png"
             height={1000}
             width={1000}
             alt="logo"
-            className="h-10 w-fit"
+            className="h-50 w-fit"
           />
         </Link>
 
@@ -41,7 +46,7 @@ const RequestSuccess = async ({
             Your <span className="text-green-500">appointment request</span> has
             been successfully submitted!
           </h2>
-          <p>We&apos;ll be in touch shortly to confirm.</p>
+          <p>We will be in touch shortly to confirm.</p>
         </section>
 
         <section className="request-details">
@@ -73,7 +78,7 @@ const RequestSuccess = async ({
           </Link>
         </Button>
 
-        <p className="copyright">© 2024 CarePluse</p>
+ 
       </div>
     </div>
   );

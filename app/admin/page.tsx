@@ -14,11 +14,11 @@ const AdminPage = async () => {
       <header className="admin-header">
         <Link href="/" className="cursor-pointer">
           <Image
-            src="/assets/icons/logo-full.svg"
+            src="/assets/icons/logo.png"
             height={32}
             width={162}
             alt="logo"
-            className="h-8 w-fit"
+            className="h-20 w-24"
           />
         </Link>
 
@@ -27,7 +27,7 @@ const AdminPage = async () => {
 
       <main className="admin-main">
         <section className="w-full space-y-4">
-          <h1 className="header">Welcome 👋</h1>
+          <h1 className="header">Welcome </h1>
           <p className="text-dark-700">
             Start the day with managing new appointments
           </p>
