@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/nextjs";
+
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import RegisterForm from "@/components/forms/RegisterForm";
@@ -9,11 +9,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
   const patient = await getPatient(userId);
 
- Sentry.metrics.increment("user_view_new_appointment", 1, {
-  tags: {
-    userId,
-  },
-});
+
 
 
 

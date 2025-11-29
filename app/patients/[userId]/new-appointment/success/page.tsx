@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/nextjs";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,6 @@ const RequestSuccess = async ({
   const appointment = await getAppointment(appointmentId);
   const user = await getUser(userId);
 
-  Sentry.metrics.increment("user_view_appointment_success", 1, {tags: { userName : user.name }});
 
   const doctor = Doctors.find(
     (doctor) => doctor.name === appointment.primaryPhysician
