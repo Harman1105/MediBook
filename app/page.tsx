@@ -18,7 +18,7 @@ const Home = ({ searchParams }: SearchParamProps) => {
             height={1000}
             width={1000}
             alt="patient"
-            className="mb-12 h-50 w-fit"
+            className="mb-12 h-48 w-fit"
           />
 
           <PatientForm />

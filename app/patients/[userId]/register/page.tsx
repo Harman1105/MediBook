@@ -1,10 +1,11 @@
+import * as Sentry from "@sentry/nextjs";
+
 import Image from "next/image";
 import { redirect } from "next/navigation";
 
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getPatient, getUser } from "@/lib/actions/patient.actions";
 
-import * as Sentry from "@sentry/nextjs";
 
 const Register = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
@@ -29,7 +30,7 @@ const Register = async ({ params: { userId } }: SearchParamProps) => {
             height={1000}
             width={1000}
             alt="patient"
-            className="mb-12 h-50 w-fit"
+            className="mb-12 h-48 w-fit"
           />
 
           <RegisterForm user={user} />

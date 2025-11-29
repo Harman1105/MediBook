@@ -1,8 +1,9 @@
+import * as Sentry from "@sentry/nextjs";
+
 import Image from "next/image";
 
 import { AppointmentForm } from "@/components/forms/AppointmentForm";
 import { getPatient } from "@/lib/actions/patient.actions";
-import * as Sentry from "@sentry/nextjs";
 
 const Appointment = async ({ params: { userId } }: SearchParamProps) => {
   const patient = await getPatient(userId);
@@ -22,7 +23,7 @@ Sentry.metrics.increment("user_view_new_appointment", 1, {
             height={1000}
             width={1000}
             alt="logo"
-            className="mb-12 h-50 w-fit"
+            className="mb-12 h-48 w-fit"
           />
 
           <AppointmentForm
